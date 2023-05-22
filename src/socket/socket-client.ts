@@ -13,9 +13,9 @@ export class SocketClient implements OnModuleInit {
     }
 
     private registetConsumerEvents() {
-        this.socketClient.emit('newMessage', { msg: 'hey there!' });
         this.socketClient.on('connect', () => {
             console.log("Connected to Gateway");
+            this.socketClient.emit('newMessage', { msg: 'hey there!' });
         });
         this.socketClient.on('onMessage', (payload: any) => {
             console.log(payload)
